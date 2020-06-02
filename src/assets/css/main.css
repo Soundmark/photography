@@ -1,0 +1,75 @@
+.BG{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  min-width: 1350px;
+}
+.BG::after{
+  content: '';
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: inherit;
+}
+.page{
+  width: 1200px;
+  margin: 0 auto;
+  z-index: 10;
+  padding-top: 20px;
+  /* background-color: rgba(141, 141, 141, 0.5); */
+}
+.page .pageItem{
+  height: 220px;
+  width: 250px;
+  display: inline-block;
+  margin: 0 25px 20px;
+  position: relative;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+.page .pageItem span{
+  width: 100%;
+  height: 180px;
+  position: absolute;
+  display: none;
+}
+.page .pageItem .mask{
+  display: inline-block;
+}
+.page .pageItem .img{
+  width: 100%;
+  height: 160px;
+  background: url('https://p0.ssl.qhimgs4.com/t01acbcf89f043fe29c.webp') no-repeat center/auto 100%;
+  border-radius: 2px;
+  box-sizing: border-box;
+}
+.page .pageItem .title{
+  height: 50px;
+  font-weight: bold;
+}
+.page .pageItem .title p{
+  margin: 0;
+  height: 30px;
+  line-height: 30px;
+}
+.page .pageItem .title div{
+  height: 20px;
+}
+.page .pageItem .title div p{
+  height: 20px;
+  width: 50%;
+  display: inline-block;
+  font-size: 12px;
+}
+.page .pageItem .title div .time{
+  float: left;
+}
+.page .pageItem .title div .like{
+  float: right;
+}
