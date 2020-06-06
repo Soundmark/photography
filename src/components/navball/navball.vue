@@ -1,6 +1,6 @@
 <template>
   <div class="navBall" @mouseover="activeNav"
-  @mouseout="quitNav" @click="quitNavNow" @mousedown="activeMove" @mouseup="cancelMove">
+  @mouseout="quitNav" @click="quitNavNow">
     <div class="navItem" v-for="(item) in navList" :key="item.id"
     :style="{left: showTool?item.x + 'px':'', top: showTool?item.y + 'px':'', opacity: showTool?1:'', transition: '0.5s'}"
     @click="setStopPropagation">

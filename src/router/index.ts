@@ -29,6 +29,16 @@ Vue.use(VueRouter)
     path: '/shebei',
     name: 'shebei',
     component: () => import('../views/shebei/shebei.vue')
+  },
+  {
+    path: '/detail',
+    name: 'detail',
+    component: () => import('../views/detail/detail.vue')
+  },
+  {
+    path: '/publish',
+    name: 'publish',
+    component: () => import('../views/publish/publish.vue')
   }
 ]
 

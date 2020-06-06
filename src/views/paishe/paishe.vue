@@ -1,6 +1,6 @@
 <template>
-  <div class="paishe" @mousemove="moveNav">
-    <nav-ball @controlMoveNav = 'controlMoveNav(e,canMove)'></nav-ball>
+  <div class="paishe">
+    <nav-ball></nav-ball>
     <el-row class="page">
       <el-col class="pageItem" v-for="(item, index) in dataList" :key="index">
         <div class="img"></div>

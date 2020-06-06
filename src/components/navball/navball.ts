@@ -75,7 +75,7 @@ export default class NavBall extends Vue {
     this.showTool = !this.showTool
   }
 
-  activeSearch(e: any){
+  activeSearch(){
     if(this.canShowSearch){
       clearTimeout(this.quitSearchTimer)
       this.showSearch = true
@@ -91,25 +91,5 @@ export default class NavBall extends Vue {
   setStopPropagation(e: any){
     console.log(e)
     e.stopPropagation()
-  }
-
-  activeMove(e: any){
-    this.ballInnerDistance.disX = e.clientX - e.target.offsetLeft
-    this.ballInnerDistance.disY = e.clientY - e.target.offsetTop
-    this.canMove = true
-    this.$emit('controlMoveNav', this.canMove, this.ballInnerDistance)
-  }
-
-  cancelMove(){
-    this.canMove = false
-    this.$emit('controlMoveNav',this.canMove)
-  }
-
-  changePosition(e: any){
-    if(this.canMove){
-      console.log(e)
-      e.target.style.left = e.clientX - this.ballInnerDistance.disX + 'px'
-      e.target.style.top = e.clientY - this.ballInnerDistance.disY + 'px'
-    }
   }
 }
