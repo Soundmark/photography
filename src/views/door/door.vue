@@ -22,13 +22,13 @@
         <img src="../../assets/images/scenery.png" alt="">
       </div>
       <div class="item" @mouseover="selectTheme(3)">
-        <router-link :to="{name: 'changjing'}">
+        <router-link :to="{name: 'houqi'}">
           <span :class="themeIndex===3?'showTitle':''">后期</span>
         </router-link>
         <img src="../../assets/images/clip.png" alt="">
       </div>
       <div class="item" @mouseover="selectTheme(4)">
-        <router-link :to="{name: 'changjing'}">
+        <router-link :to="{name: 'shebei'}">
           <span :class="themeIndex===4?'showTitle':''">设备</span>
         </router-link>
         <img src="../../assets/images/camera.png" alt="">

@@ -2,6 +2,7 @@ import {Component} from 'vue-property-decorator'
 import Vue from 'vue'
 import VueShowdown from 'vue-showdown'
 import axios from 'axios'
+import router from '@/router'
 
 Vue.use(VueShowdown, {
   flavor: 'vanilla',
@@ -17,20 +18,24 @@ state = {
   publisher: '',
   time: '',
   likes: '',
-  content: '',
-}
+  content: ''
+ }
 
 mounted() {
- this.initData() 
+ this.initData()
 }
 
 initData(){
-  axios.get('/paishe/getItem?id=1').then((res: any)=>{
-    console.log(res.data)
+  console.log(this.$route)
+  const query = {
+    id: this.$route.query.id,
+    type: this.$route.query.type
+  }
+  axios.get('/api/data/getItem', {params: query}).then((res: any)=>{
     this.state.id = res.data.id
     this.state.title = res.data.title
     this.state.publisher = res.data.publisher
-    this.state.time = res.data.time
+    this.state.time = res.data.time.slice(0, 10)
     this.state.likes = res.data.likes
     this.state.content = res.data.content
   })

@@ -1,6 +1,7 @@
 import {Component} from 'vue-property-decorator'
 import Vue from 'vue'
 import navBall from '@/components/navball/navball.vue'
+import axios from 'axios'
 
 @Component({
   components: {
@@ -8,6 +9,17 @@ import navBall from '@/components/navball/navball.vue'
   }
 })
 export default class Paishe extends Vue {
-   dataList = [1,2,3,4,5,6,7,8,9,1,1,1,1,1,1,1,1,1,1,1,1,11,1,1,1,1,11,1,1,]
+  dataList = []
+  
+  mounted() {
+    this.initData()
+    this.$store.commit('showNavHandle')
+   }
 
+  initData(){
+    axios.get('/api/data/getList?type=paishe').then((res: any)=>{
+      console.log(res.data)
+      this.dataList = res.data
+    })
+  }
 }

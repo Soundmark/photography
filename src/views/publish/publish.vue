@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div class="publish">
     <div class="article">
       <div class="head">
         <h1>{{state.title}}</h1>
-        <div class="publisher">作者：小剩</div>
+        <div class="publisher">作者：<input type="text" v-model="state.publisher"></div>
       </div>
       <VueShowdown :markdown="state.content" class="markdown"/>
     </div>
     <div class="editPart">
+      <el-button type="primary" @click="handleSubmit">发布</el-button>
       <div class="title">
         <label>主题：<input type="text" placeholder="输入标题" v-model="state.title"></label>
       </div>
@@ -25,6 +26,7 @@
         action="/api/data/uploadCover"
         :on-change="handleChange"
         list-type="picture-card"
+        :on-success="handleSuccess"
         >
           <i class="el-icon-plus"></i>
           <div slot-scope="{file}" slot="file">
@@ -41,6 +43,7 @@
           <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
       </div>
+      <input type="text" class="rightSet" placeholder="rightset" v-model="state.rightSet">
       <textarea v-model="state.content" class="editor"></textarea>
     </div>
   </div>
@@ -49,6 +52,10 @@
 <script src="./publish.ts" lang="ts"></script>
 
 <style lang="less">
+.article{
+  height: 540px;
+  overflow-y: scroll;
+}
 .markdown{
   width: 800px;
   margin: 0 auto;
@@ -128,6 +135,11 @@
     .upload-delete:hover{
       display: inline-block;
     }
+  }
+  .rightSet{
+    position: absolute;
+    right: 100px;
+    top: 5px;
   }
   .editor{
     position: absolute;

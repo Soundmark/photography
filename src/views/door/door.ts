@@ -6,6 +6,10 @@ export default class Door extends Vue {
   count = 0
   themeIndex = 1
 
+  mounted() {
+    this.$store.commit('hideNavHandle') 
+  }
+
   selectTheme(index: number){
     this.themeIndex = index
     console.log('切换主题', this.themeIndex)
