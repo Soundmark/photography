@@ -38,6 +38,9 @@ Vue.use(VueRouter)
   {
     path: '/publish',
     name: 'publish',
+    meta: {
+      needLogin: true
+    },
     component: () => import('../views/publish/publish.vue')
   }
 ]

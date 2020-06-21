@@ -8,11 +8,12 @@
       <VueShowdown :markdown="state.content" class="markdown"/>
     </div>
     <div class="editPart">
-      <el-button type="primary" @click="handleSubmit">发布</el-button>
+      <el-button type="primary" v-if="isPublish" @click="handleSubmit">发布</el-button>
+      <el-button type="primary" v-if="!isPublish" @click="handleUpdate">更新</el-button>
       <div class="title">
         <label>主题：<input type="text" placeholder="输入标题" v-model="state.title"></label>
       </div>
-      <el-select v-model="state.type">
+      <el-select v-model="state.type" :disabled="!isPublish">
         <el-option label="拍摄" value="paishe"></el-option>
         <el-option label="场景" value="changjing"></el-option>
         <el-option label="后期" value="houqi"></el-option>
@@ -43,7 +44,7 @@
           <img width="100%" :src="dialogImageUrl" alt="">
         </el-dialog>
       </div>
-      <input type="text" class="rightSet" placeholder="rightset" v-model="state.rightSet">
+      <!-- <input type="text" class="rightSet" placeholder="rightset" v-model="state.rightSet"> -->
       <textarea v-model="state.content" class="editor"></textarea>
     </div>
   </div>

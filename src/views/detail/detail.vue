@@ -3,7 +3,10 @@
     <div class="detail">
       <div class="head">
         <h1>{{state.title}}</h1>
-        <div class="publisher">作者：小剩</div>
+        <div class="publisher">作者：{{state.publisher}}</div>
+        <div class="edit">
+          <router-link :to="{name: 'publish', params: {state}}">编辑</router-link>
+        </div>
       </div>
       <VueShowdown :markdown="state.content" class="markdown"/>
     </div>
@@ -24,6 +27,14 @@
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 0 5px 0px black;
   margin: 5px 0 10px;
+  .edit{
+    position: absolute;
+    right: 25px;
+    top: 89px;
+    a{
+      text-decoration: none;
+    }
+  }
 }
 .web-message{
   position: relative;

@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    showNav: true
+    showNav: true,
+    isLogin: false
   },
   mutations: {
     showNavHandle(state){
@@ -14,6 +15,12 @@ export default new Vuex.Store({
     },
     hideNavHandle(state){
       state.showNav = false
+    },
+    loginHandle(state){
+      state.isLogin = true
+    },
+    logoutHandle(state){
+      state.isLogin = false
     }
   },
   actions: {

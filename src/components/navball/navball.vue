@@ -4,7 +4,7 @@
     <div class="mainBall">
       <img :src="showTool?require('../../assets/images/menu_active.png'):require('../../assets/images/menu.png')" alt="">
     </div>
-    <div class="navItem" v-for="(item) in navList" :key="item.id"
+    <div class="navItem" v-for="(item) in navListCo" :key="item.id"
     :style="{left: showTool?item.x + 'px':'', top: showTool?item.y + 'px':'', opacity: showTool?1:'', transition: '0.5s'}"
     @click="setStopPropagation">
       <div v-if="item.type === 'nav'" class="nav">

@@ -27,7 +27,7 @@ module.exports = {
   devServer: {
     proxy: {
       '/api': {
-        target: 'http://129.204.224.217:80',  //129.204.224.217:80
+        target: 'http://www.doglefts.cn:3000',  //129.204.224.217:80
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api'
@@ -67,7 +67,7 @@ module.exports = {
       return {
         plugins: [
           new CompressionPlugin({
-            test: /\.js$|\.html$|\.css/,
+            test: /\.js$|\.html$|\.css$|\.ttf/,
             // test: /\.js/,
             threshold: 10240,
             deleteOriginalAssets: false

@@ -1,4 +1,4 @@
-import {Component} from 'vue-property-decorator'
+import {Component, Watch} from 'vue-property-decorator'
 import Vue from 'vue'
 
 @Component
@@ -64,14 +64,42 @@ export default class NavBall extends Vue {
       src: require('../../assets/images/shoot.png'),
       x: -24.72,
       y: -76.08
+    },
+    {
+      id: 'publish',
+      name: '发帖',
+      to: 'publish',
+      type: 'nav',
+      src: require('../../assets/images/add.png'),
+      x: 0,
+      y: 0
     }
   ]
+  navListCo = []
 
   mounted(){
-    const deg = Math.PI * 2 / this.navList.length
+    this.initData()
+  }
+
+  get isLogin(){
+    return this.$store.state.isLogin
+  }
+
+  @Watch('isLogin', {})
+  handler(val: boolean){
+    this.initData()
+  }
+
+  initData(){
+    this.navListCo = JSON.parse(JSON.stringify(this.navList))
+    if(!this.isLogin){
+      this.navListCo.pop()
+    }
+    const deg = Math.PI * 2 / this.navListCo.length
     let degCount = Math.PI
     const r = 80
-    this.navList.forEach((item: any)=>{
+    this.navListCo.forEach((item: any)=>{
+      // console.log(item)
       item.x = Math.cos(degCount) * r
       item.y = Math.sin(degCount) * r
       degCount -= deg
