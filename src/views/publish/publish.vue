@@ -24,7 +24,7 @@
       </div>
       <div class="uploadImg">
         <el-upload
-        action="/api/data/uploadCover"
+        :action="url+'/api/data/uploadCover'"
         :on-change="handleChange"
         list-type="picture-card"
         :on-success="handleSuccess"

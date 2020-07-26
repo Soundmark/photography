@@ -30,6 +30,7 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 // 请求头中加入token
 axios.interceptors.request.use((config: any)=>{
   if(localStorage.getItem('token')){

@@ -3,6 +3,7 @@ import Vue from 'vue'
 import VueShowdown from 'vue-showdown'
 import axios from 'axios'
 import {Message} from 'element-ui'
+import global from '@/utils/global'
 
 Vue.use(VueShowdown, {
   flavor: 'vanilla',
@@ -31,10 +32,15 @@ mounted() {
  this.initData() 
 }
 
+get url(){
+  return global.url
+}
+
 initData(){
   if(this.$route.params.state){
     this.isPublish = false
     this.$global.setStateKey(this.state, this.$route.params.state)
+    console.log(this.state)
   }
 }
 
@@ -47,7 +53,7 @@ handlePreview(file: any){
 handleRemove(file: any) {
   this.fileList.pop()
   const path: any = this.state.cover.match(/\/cover\/\d+.\w+$/)
-  axios.get('/api/data/deleteCover?path=' + path[0]).then((res: any)=>{
+  axios.get(global.url+'/api/data/deleteCover?path=' + path[0]).then((res: any)=>{
     console.log(res.data)
   })
   this.state.cover = ''
@@ -62,7 +68,7 @@ handleSuccess(res: string){
   console.log(res)
   if(this.state.cover && this.state.cover.match(/\/cover\/\d+.\w+$/)){
     const path: any = this.state.cover.match(/\/cover\/\d+.\w+$/)
-    axios.get('/api/data/deleteCover?path=' + path[0]).then((res: any)=>{
+    axios.get(global.url+'/api/data/deleteCover?path=' + path[0]).then((res: any)=>{
       console.log(res.data)
     })
   }
@@ -77,7 +83,7 @@ handleSubmit(){
   this.state.time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + (date.getDate() + 1)
   this.state.content = JSON.stringify(this.state.content)
   console.log(this.state)
-  axios.post('/api/data/addItem', this.state).then((res: any)=>{
+  axios.post(global.url+'/api/data/addItem', this.state).then((res: any)=>{
     console.log(res.data)
     if(res.data.type==='success'){
       Message.success(res.data.info)
@@ -95,7 +101,7 @@ handleUpdate(){
   this.state.time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + (date.getDate() + 1)
   this.state.content = JSON.stringify(this.state.content)
   console.log(this.state)
-  axios.post('/api/data/updateItem', this.state).then((res: any)=>{
+  axios.post(global.url+'/api/data/updateItem', this.state).then((res: any)=>{
     console.log(res.data)
     if(res.data.type==='success'){
       Message.success(res.data.info)

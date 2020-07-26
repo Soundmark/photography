@@ -25,15 +25,15 @@ const cdn = {
 }
 module.exports = {
   devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://www.doglefts.cn:3000',  //129.204.224.217:80
-        changeOrigin: true,
-        pathRewrite: {
-          '^/api': '/api'
-        }
-      }
-    }
+    // proxy: {
+    //   '/api': {
+    //     target: 'http://localhost:3000',  //129.204.224.217:80
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/api': '/api'
+    //     }
+    //   }
+    // }
   },
   productionSourceMap: false,
   chainWebpack: config => {

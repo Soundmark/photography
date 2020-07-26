@@ -2,6 +2,7 @@ import {Component} from 'vue-property-decorator'
 import Vue from 'vue'
 import navBall from '@/components/navball/navball.vue'
 import axios from 'axios'
+import global from '@/utils/global'
 
 @Component({
   components: {
@@ -17,7 +18,7 @@ export default class Paishe extends Vue {
    }
 
   initData(){
-    axios.get('/api/data/getList?type=paishe').then((res: any)=>{
+    axios.get(global.url+'/api/data/getList?type=paishe').then((res: any)=>{
       console.log(res.data)
       this.dataList = res.data
     })

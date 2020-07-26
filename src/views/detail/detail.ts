@@ -3,6 +3,7 @@ import Vue from 'vue'
 import VueShowdown from 'vue-showdown'
 import axios from 'axios'
 import router from '@/router'
+import global from '@/utils/global'
 
 Vue.use(VueShowdown, {
   flavor: 'vanilla',
@@ -34,7 +35,7 @@ initData(){
     id: this.$route.query.id,
     type: this.$route.query.type
   }
-  axios.get('/api/data/getItem', {params: query}).then((res: any)=>{
+  axios.get(global.url+'/api/data/getItem', {params: query}).then((res: any)=>{
     // this.state.id = res.data.id
     // this.state.title = res.data.title
     // this.state.publisher = res.data.publisher

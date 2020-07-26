@@ -1,6 +1,7 @@
 import {Component} from 'vue-property-decorator'
 import Vue from 'vue'
 import axios from 'axios'
+import global from '@/utils/global'
 
 @Component({})
 export default class Login extends Vue {
@@ -15,7 +16,7 @@ export default class Login extends Vue {
 
   login(){
     console.log(this.data)
-    axios.post('/api/user/signin', this.data).then((res: any)=>{
+    axios.post(global.url+'/api/user/signin', this.data).then((res: any)=>{
       console.log(res.data)
       if(res.data.success){
         this.$store.commit('loginHandle')
