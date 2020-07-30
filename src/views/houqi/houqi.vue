@@ -21,7 +21,7 @@
         </div>
       </el-col>
     </el-row>
-    <div class="BG" :style="'background:url('+'https://w.wallhaven.cc/full/r7/wallhaven-r71yoj.jpg'+') no-repeat center/100% auto'"></div>
+    <div class="BG" :style="'background:url('+'https://api.doglefts.cn/BG/houqi.jpg'+') no-repeat center/100% auto'"></div>
   </div>
 </template>
 

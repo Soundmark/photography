@@ -10,7 +10,7 @@
       </div>
       <VueShowdown :markdown="state.content" class="markdown"/>
     </div>
-    <div class="BG" :style="'background:url('+'https://w.wallhaven.cc/full/4y/wallhaven-4ymdyx.jpg'+') no-repeat center/100% auto'"></div>
+    <div class="BG" :style="'background:url('+'https://api.doglefts.cn/BG/detail.jpg'+') no-repeat center/100% auto'"></div>
   </div>
 </template>
 

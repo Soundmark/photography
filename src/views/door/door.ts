@@ -12,6 +12,18 @@ export default class Door extends Vue {
 
   selectTheme(index: number){
     this.themeIndex = index
-    console.log('切换主题', this.themeIndex)
+    if(index===2){
+      this.setBG(this.$refs.changjing, 'changjing')
+    }else if(index===3){
+      this.setBG(this.$refs.houqi, 'houqi')
+    }else if(index===4){
+      this.setBG(this.$refs.shebei, 'shebei')
+    }
   }
+
+  setBG(ele: any, name: string){
+    if(!ele.style.background){
+      ele.style.background = 'url(https://api.doglefts.cn/BG/'+name+'.jpg) no-repeat center/100% auto'
+    }
+}
 }
