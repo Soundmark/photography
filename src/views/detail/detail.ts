@@ -29,6 +29,10 @@ mounted() {
  this.initData()
 }
 
+get isLogin(){
+  return this.$store.state.isLogin
+}
+
 initData(){
   console.log(this.$route)
   const query = {
@@ -36,15 +40,6 @@ initData(){
     type: this.$route.query.type
   }
   axios.get(global.url+'/api/data/getItem', {params: query}).then((res: any)=>{
-    // this.state.id = res.data.id
-    // this.state.title = res.data.title
-    // this.state.publisher = res.data.publisher
-    // this.state.time = res.data.time.slice(0, 10)
-    // this.state.likes = res.data.likes
-    // this.state.content = res.data.content
-    // this.state.type = res.data.type
-    // this.state.cover = res.data.cover
-    // this.state.introduction = res.data.introduction
     this.$global.setStateKey(this.state, res.data)
   })
 }

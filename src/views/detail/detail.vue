@@ -4,7 +4,7 @@
       <div class="head">
         <h1>{{state.title}}</h1>
         <div class="publisher">作者：{{state.publisher}}</div>
-        <div class="edit">
+        <div class="edit" v-if="isLogin">
           <router-link :to="{name: 'publish', params: {state}}">编辑</router-link>
         </div>
       </div>
