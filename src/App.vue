@@ -9,8 +9,12 @@
       <i class="el-icon-user" @click="userHandle"></i>
     </div>
     <div class="web-info" v-if="showNav">
-      <span>info</span>
-      <p>粤ICP备20039570号-1</p>
+      <el-tooltip content="粤ICP备20039570号-1" placement="top">
+        <el-button>info</el-button>
+      </el-tooltip>
+    </div>
+    <div class="theme-info">
+      <span>当前主题:{{theme}}</span>
     </div>
   </div>
 </template>
@@ -33,6 +37,27 @@ export default {
     },
     showNav(){
       return this.$store.state.showNav
+    },
+    theme(){
+      let text
+      switch (this.$route.name) {
+        case 'paishe':
+          text = '拍摄'
+          break;
+        case 'changjing':
+          text = '场景'
+          break;
+        case 'houqi':
+          text = '后期'
+          break;
+        case 'shebei':
+          text = '设备'
+          break;
+        default:
+          text = '帖子'
+          break;
+      }
+      return text
     }
   },
   created(){
@@ -106,28 +131,37 @@ export default {
     top: 0;
     background-color: rgb(159, 160, 160);
   }
-  p{
-    margin: 0;
-    width: 160px;
-    height: 20px;
-    display: inline-block;
-    visibility: hidden;
-    opacity: 0;
-    font-size: 14px;
-    line-height: 20px;
-    margin-left: 45px;
-    transition: .5s;
-    background-color: white;
-    position: absolute;
-    top: 0;
-    border-radius: 3px;
-  }
 }
 .web-info:hover{
   p{
     opacity: 1;
     visibility: visible;
     transition: .5s;
+  }
+}
+.web-info .el-button{
+  height: 20px;
+  width: 40px;
+  padding: 0;
+  line-height: 20px;
+}
+.theme-info{
+  position: absolute;
+  height: 20px;
+  left: 75px;
+  bottom: 10px;
+  text-align: center;
+  line-height: 20px;
+  span{
+    background-color: rgb(0, 128, 128);
+    display: inline-block;
+    border-radius: 3px;
+    color: white;
+    font-size: 12px;
+    width: 80px;
+    height: 20px;
+    position: absolute;
+    top: 0;
   }
 }
 </style>
