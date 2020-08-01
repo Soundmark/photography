@@ -1,6 +1,5 @@
 <template>
   <div class="paishe">
-    <!-- <nav-ball></nav-ball> -->
     <el-row class="page">
       <el-col class="pageItem" v-for="(item, index) in dataList" :key="index">
         <router-link :to="{path: '/detail?type=paishe&id='+item.id}">
@@ -22,7 +21,12 @@
         </div>
       </el-col>
     </el-row>
-    <div class="BG" :style="'background:url('+'https://api.doglefts.cn/BG/paishe.jpg'+') no-repeat center/100% auto'"></div>
+     <div class="bigBG isShowBG BG">
+      <div class="linear topright"></div>
+      <div class="linear1 bottomright"></div>
+      <div class="linear2 bottomright"></div>
+      <div class="linear3 topright"></div>
+     </div>
   </div>
 </template>
 
