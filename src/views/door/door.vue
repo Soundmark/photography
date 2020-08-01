@@ -1,37 +1,57 @@
 <template>
   <div class="door">
-    <div class="bigBG" :class="themeIndex===1?'isShowBG':''" :style="'background:url('+'https://api.doglefts.cn/BG/paishe.jpg'+') no-repeat center/100% auto'">
-    </div>
-    <div ref="changjing" class="bigBG" :class="themeIndex===2?'isShowBG':''">
-    </div>
-    <div ref="houqi" class="bigBG" :class="themeIndex===3?'isShowBG':''">
-    </div>
-    <div ref="shebei" class="bigBG" :class="themeIndex===4?'isShowBG':''">
+    <div class="bigBG isShowBG">
+      <div class="linear topright"></div>
+      <div class="linear1 bottomright"></div>
+      <div class="linear2 bottomright"></div>
+      <div class="linear3 topright"></div>
+      <el-carousel ref="carousel" type="card" :interval="4000" @change="changePic" :autoplay="false">
+        <el-carousel-item>
+          <router-link class="link" :to="{name: 'paishe'}" v-show="themeIndex===0"></router-link>
+          <img src="https://api.doglefts.cn/BG/paishe.jpg">
+          <div class="des">
+            <h3>日常摄影</h3>
+            <p>随便拍拍</p>
+          </div>
+        </el-carousel-item>
+        <el-carousel-item>
+          <router-link class="link" :to="{name: 'changjing'}" v-show="themeIndex===1"></router-link>
+          <img src="https://api.doglefts.cn/BG/changjing.jpg">
+          <div class="des">
+            <h3>拍摄场景</h3>
+            <p>记录特殊的拍摄场景</p>
+          </div>
+        </el-carousel-item>
+        <el-carousel-item>
+          <router-link class="link" :to="{name: 'houqi'}" v-show="themeIndex===2"></router-link>
+          <img src="https://api.doglefts.cn/BG/houqi.jpg">
+          <div class="des">
+            <h3>修图调色</h3>
+            <p>亚洲邪术</p>
+          </div>
+        </el-carousel-item>
+        <el-carousel-item>
+          <router-link class="link" :to="{name: 'shebei'}" v-show="themeIndex===3"></router-link>
+          <img src="https://api.doglefts.cn/BG/shebei.jpg">
+          <div class="des">
+            <h3>设备测评</h3>
+            <p>有哪样搞哪样</p>
+          </div>
+        </el-carousel-item>
+      </el-carousel>
     </div>
     <div class="horse-light">
-      <div class="item" @mouseover="selectTheme(1)">
-        <router-link :to="{name: 'paishe'}">
-          <span :class="themeIndex===1?'showTitle':''">拍摄</span>
-        </router-link>
-        <img src="../../assets/images/shoot.png" alt="">
+      <div class="item" @click="selectTheme(0)">
+        <span :class="themeIndex===0?'showTitle':''">拍摄</span>
       </div>
-      <div class="item" @mouseover="selectTheme(2)">
-        <router-link :to="{name: 'changjing'}">
-          <span :class="themeIndex===2?'showTitle':''">场景</span>
-        </router-link>
-        <img src="../../assets/images/scenery.png" alt="">
+      <div class="item" @click="selectTheme(1)">
+        <span :class="themeIndex===1?'showTitle':''">场景</span>
       </div>
-      <div class="item" @mouseover="selectTheme(3)">
-        <router-link :to="{name: 'houqi'}">
-          <span :class="themeIndex===3?'showTitle':''">后期</span>
-        </router-link>
-        <img src="../../assets/images/clip.png" alt="">
+      <div class="item" @click="selectTheme(2)">
+        <span :class="themeIndex===2?'showTitle':''">后期</span>
       </div>
-      <div class="item" @mouseover="selectTheme(4)">
-        <router-link :to="{name: 'shebei'}">
-          <span :class="themeIndex===4?'showTitle':''">设备</span>
-        </router-link>
-        <img src="../../assets/images/camera.png" alt="">
+      <div class="item" @click="selectTheme(3)">
+        <span :class="themeIndex===3?'showTitle':''">设备</span>
       </div>
     </div>
   </div>

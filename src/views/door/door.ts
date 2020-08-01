@@ -4,7 +4,7 @@ import Vue from 'vue';
 @Component
 export default class Door extends Vue {
   count = 0
-  themeIndex = 1
+  themeIndex = 0
 
   mounted() {
     this.$store.commit('hideNavHandle') 
@@ -12,18 +12,11 @@ export default class Door extends Vue {
 
   selectTheme(index: number){
     this.themeIndex = index
-    if(index===2){
-      this.setBG(this.$refs.changjing, 'changjing')
-    }else if(index===3){
-      this.setBG(this.$refs.houqi, 'houqi')
-    }else if(index===4){
-      this.setBG(this.$refs.shebei, 'shebei')
-    }
+    const carousel: any = this.$refs.carousel
+    carousel.setActiveItem(index)
   }
 
-  setBG(ele: any, name: string){
-    if(!ele.style.background){
-      ele.style.background = 'url(https://api.doglefts.cn/BG/'+name+'.jpg) no-repeat center/100% auto'
-    }
-}
+  changePic(index: number){
+    this.themeIndex = index
+  }
 }
