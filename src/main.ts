@@ -4,8 +4,9 @@ import router from './router'
 import store from './store'
 import './plugins/element.js'
 import axios from 'axios'
-import global from './utils/global'
+import Global from './utils/global'
 
+const global = new Global()
 Vue.config.productionTip = false
 Vue.prototype.$global = global
 

@@ -3,7 +3,7 @@ import Vue from 'vue'
 import VueShowdown from 'vue-showdown'
 import axios from 'axios'
 import {Message} from 'element-ui'
-import global from '@/utils/global'
+import Config from '@/utils/config'
 
 Vue.use(VueShowdown, {
   flavor: 'vanilla',
@@ -33,7 +33,7 @@ mounted() {
 }
 
 get url(){
-  return global.url
+  return Config.url
 }
 
 initData(){
@@ -53,7 +53,7 @@ handlePreview(file: any){
 handleRemove(file: any) {
   this.fileList.pop()
   const path: any = this.state.cover.match(/\/cover\/\d+.\w+$/)
-  axios.get(global.url+'/api/data/deleteCover?path=' + path[0]).then((res: any)=>{
+  axios.get(Config.url+'/api/data/deleteCover?path=' + path[0]).then((res: any)=>{
     console.log(res.data)
   })
   this.state.cover = ''
@@ -68,7 +68,7 @@ handleSuccess(res: string){
   console.log(res)
   if(this.state.cover && this.state.cover.match(/\/cover\/\d+.\w+$/)){
     const path: any = this.state.cover.match(/\/cover\/\d+.\w+$/)
-    axios.get(global.url+'/api/data/deleteCover?path=' + path[0]).then((res: any)=>{
+    axios.get(Config.url+'/api/data/deleteCover?path=' + path[0]).then((res: any)=>{
       console.log(res.data)
     })
   }
@@ -83,7 +83,7 @@ handleSubmit(){
   this.state.time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + (date.getDate() + 1)
   this.state.content = JSON.stringify(this.state.content)
   console.log(this.state)
-  axios.post(global.url+'/api/data/addItem', this.state).then((res: any)=>{
+  axios.post(Config.url+'/api/data/addItem', this.state).then((res: any)=>{
     console.log(res.data)
     if(res.data.type==='success'){
       Message.success(res.data.info)
@@ -101,7 +101,7 @@ handleUpdate(){
   this.state.time = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + (date.getDate() + 1)
   this.state.content = JSON.stringify(this.state.content)
   console.log(this.state)
-  axios.post(global.url+'/api/data/updateItem', this.state).then((res: any)=>{
+  axios.post(Config.url+'/api/data/updateItem', this.state).then((res: any)=>{
     console.log(res.data)
     if(res.data.type==='success'){
       Message.success(res.data.info)

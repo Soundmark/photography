@@ -13,7 +13,7 @@
         <el-button>info</el-button>
       </el-tooltip>
     </div>
-    <div class="theme-info">
+    <div class="theme-info" v-if="showNav">
       <span>当前主题:{{theme}}</span>
     </div>
   </div>

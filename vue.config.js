@@ -16,7 +16,7 @@ const cdn = {
     ],
     js: [
       "https://cdn.jsdelivr.net/npm/vue@2.6.11",
-      "https://unpkg.com/element-ui@2.4.5/lib/index.js",
+      "https://unpkg.com/element-ui@2.13.2/lib/index.js",
       "https://unpkg.com/axios@0.19.2/dist/axios.min.js",
       "https://unpkg.com/vuex@3.4.0",
       "https://unpkg.com/vue-router@3.2.0/dist/vue-router.js"

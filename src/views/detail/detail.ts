@@ -3,7 +3,7 @@ import Vue from 'vue'
 import VueShowdown from 'vue-showdown'
 import axios from 'axios'
 import router from '@/router'
-import global from '@/utils/global'
+import Config from '@/utils/config'
 
 Vue.use(VueShowdown, {
   flavor: 'vanilla',
@@ -39,7 +39,7 @@ initData(){
     id: this.$route.query.id,
     type: this.$route.query.type
   }
-  axios.get(global.url+'/api/data/getItem', {params: query}).then((res: any)=>{
+  axios.get(Config.url+'/api/data/getItem', {params: query}).then((res: any)=>{
     this.$global.setStateKey(this.state, res.data)
   })
 }
