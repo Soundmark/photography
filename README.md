@@ -1,24 +1,4 @@
-# photography
+# 我的个人摄影博客
 
-## Project setup
-```
-npm install
-```
+正式网站已经上线，欢迎来踩一踩www.doglefts.cn
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
