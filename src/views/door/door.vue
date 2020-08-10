@@ -54,6 +54,9 @@
         <span :class="themeIndex===3?'showTitle':''">设备</span>
       </div>
     </div>
+    <div class="webInfo">
+      <a href="http://beian.miit.gov.cn" target="_blank">粤ICP备20039570号-1</a>
+    </div>
   </div>
 </template>
 
