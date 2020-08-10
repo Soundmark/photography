@@ -8,11 +8,6 @@
     :style="isLogin?'background-color:rgb(0, 128, 128)':''">
       <i class="el-icon-user" @click="userHandle"></i>
     </div>
-    <div class="web-info" v-if="showNav">
-      <el-tooltip content="粤ICP备20039570号-1" placement="top">
-        <el-button>info</el-button>
-      </el-tooltip>
-    </div>
     <div class="theme-info" v-if="showNav">
       <span>当前主题:{{theme}}</span>
     </div>
@@ -148,7 +143,7 @@ export default {
 .theme-info{
   position: absolute;
   height: 20px;
-  left: 75px;
+  left: 35px;
   bottom: 10px;
   text-align: center;
   line-height: 20px;

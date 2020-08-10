@@ -4,11 +4,13 @@ import router from './router'
 import store from './store'
 import './plugins/element.js'
 import axios from 'axios'
+import VueLazyload from 'vue-lazyload'
 import Global from './utils/global'
 
 const global = new Global()
 Vue.config.productionTip = false
 Vue.prototype.$global = global
+Vue.use(VueLazyload)
 
 router.beforeEach((to, from, next)=>{
   if(localStorage.getItem('token')){

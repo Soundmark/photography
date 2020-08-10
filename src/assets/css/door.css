@@ -107,7 +107,7 @@
 .horse-light{
   width: 100%;
   position: fixed;
-  bottom: 20px;  
+  bottom: 40px;  
   display: flex;
   justify-content: space-around;
 }
@@ -140,4 +140,18 @@
   width: 100px;
   height: 100px;
   margin: 25px 0;
+}
+.webInfo{
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.webInfo a{
+  color: rgb(199, 197, 197);
+  text-decoration: none;
+  font-size: 12px;
+}
+.webInfo a:hover{
+  color: #e6e6e6
 }
