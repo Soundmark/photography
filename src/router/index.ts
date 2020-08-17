@@ -42,7 +42,15 @@ Vue.use(VueRouter)
       needLogin: true
     },
     component: () => import('../views/publish/publish.vue')
-  }
+  },
+  {
+    path: '/user',
+    name: 'user',
+    meta: {
+      needLogin: true
+    },
+    component: () => import('../views/user/user.vue')
+  },
 ]
 
 const router = new VueRouter({

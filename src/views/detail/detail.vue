@@ -10,7 +10,7 @@
       </div>
       <VueShowdown :markdown="state.content" class="markdown"/>
     </div>
-    <comment :class="showComment?'showComment':''" @cancelComment="switchComment"></comment>
+    <comment :class="showComment?'showComment':''" @cancelComment="switchComment" :article="{id:state.id,title:state.title,type:state.type}"></comment>
     <div class="commentList">
       <div class="title">
         <p>留言区</p>

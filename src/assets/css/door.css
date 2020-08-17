@@ -89,7 +89,7 @@
     rgba(0,0,0,0) 100%
   );
   width: 50%;
-  height: 500px;
+  height: 50vh;
 }
 .bigBG .bottomright{
   background: linear-gradient(
@@ -99,7 +99,7 @@
     rgba(0,0,0,0) 100%
   );
   width: 50%;
-  height: 500px;
+  height: 50vh;
 }
 .isShowBG{
   display: block;

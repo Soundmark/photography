@@ -6,7 +6,7 @@
       </div>
       <div class="button">
         <el-button @click="cancel">取消</el-button>
-        <el-button type="primary">留言</el-button>
+        <el-button type="primary" @click="comment">留言</el-button>
       </div>
     </div>
   </div>
