@@ -23,7 +23,7 @@ initComment(){
     pageCount: this.pageCount,
     status: this.status
   }
-  axios.post(Config.url + '/api/comment/getCommentList', req).then((res)=>{
+  axios.post(Config.url + '/admin/comment/getCommentList', req).then((res)=>{
     // console.log(res.data)
     this.total = res.data.count
     res.data.dataList.reverse()
@@ -42,7 +42,7 @@ pass(item: any){
     type: item.type,
     status: 'yishenhe'
   }
-  axios.post(Config.url + '/api/comment/passComment', req).then((res)=>{
+  axios.post(Config.url + '/admin/comment/passComment', req).then((res)=>{
     // console.log(res.data)
     this.$message({
       message: res.data,
@@ -54,7 +54,7 @@ pass(item: any){
 
 delComment(id: number){
   const req = {id}
-  axios.post(Config.url + '/api/comment/deleteComment', req).then((res)=>{
+  axios.post(Config.url + '/admin/comment/deleteComment', req).then((res)=>{
     this.$message({
       message: res.data,
       type: 'success'
@@ -70,7 +70,7 @@ goBack(item: any){
     status: 'daishenhe',
     type: item.type
   }
-  axios.post(Config.url + '/api/comment/backComment', req).then(res=>{
+  axios.post(Config.url + '/admin/comment/backComment', req).then(res=>{
     this.$message({
       message: res.data,
       type: 'success'

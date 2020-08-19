@@ -11,6 +11,9 @@
     <div class="theme-info" v-if="showNav">
       <span>当前主题:{{theme}}</span>
     </div>
+    <div v-if="isLogin" class="web-info">
+      <el-button @click="logout">退出</el-button>
+    </div>
   </div>
 </template>
 
@@ -67,13 +70,6 @@ export default {
   methods: {
     userHandle(){
       if(this.isLogin){
-        // this.$confirm('退出登录？', '提示', {
-        //   confirmButtonText: '确定',
-        //   cancelButtonText: '取消'
-        // }).then(()=>{
-        //   localStorage.removeItem('token')
-        //   this.$store.commit('logoutHandle')
-        // })
         this.$router.push({name: 'user'})
       }else{
         this.showLogin = true
@@ -83,6 +79,16 @@ export default {
     close(){
       this.showMask = false
       this.showLogin = false
+    },
+    logout(){
+      this.$confirm('退出登录？', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消'
+      }).then(()=>{
+        localStorage.removeItem('token')
+        this.$store.commit('logoutHandle')
+        this.$router.push({path: '/'})
+      })
     }
   },
   components: {
@@ -110,7 +116,7 @@ export default {
 .web-info{
   position: absolute;
   height: 20px;
-  left: 30px;
+  left: 125px;
   bottom: 10px;
   text-align: center;
   line-height: 20px;
@@ -122,7 +128,7 @@ export default {
     height: 20px;
     border-radius: 3px;
     position: absolute;
-    cursor: default;
+    // cursor: default;
     left: 0;
     top: 0;
     background-color: rgb(159, 160, 160);
