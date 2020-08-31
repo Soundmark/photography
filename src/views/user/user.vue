@@ -71,7 +71,7 @@
   .list{
     padding: 0;
     border: 1px solid #e6e6e6;
-    overflow: scroll-y;
+    overflow-y: scroll;
     margin-bottom: 40px;
   }
   .el-pagination{
