@@ -4,6 +4,7 @@ import VueShowdown from 'vue-showdown'
 import axios from 'axios'
 import Config from '@/utils/config'
 import comment from '@/components/comment/comment.vue'
+import {throttle} from '@/utils/debounce&throttle'
 
 Vue.use(VueShowdown, {
   flavor: 'vanilla',
@@ -40,9 +41,7 @@ updated() {
   this.$nextTick(()=>{
     const markdown = document.querySelector('.markdown')
     const imgList = markdown?.querySelectorAll('img')
-    window.onscroll = () => {
-      this.setLazyload(imgList)
-    }
+    window.onscroll = throttle(()=>{this.setLazyload(imgList)}, 100)
   })
 }
 
@@ -69,7 +68,7 @@ setLazyload(list: any): any{
   const screenHeight = document.documentElement.clientHeight
   const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
   for(let i=this.n;i<list.length;i++){
-    console.log(list[i].offsetTop)
+    // console.log(list[i].offsetTop)
     if(list[i].offsetTop < screenHeight + scrollTop){
       if(list[i].src==='https://api.doglefts.cn/loading.gif'){
         list[i].src = list[i].getAttribute('data-src')
