@@ -70,6 +70,13 @@ export default {
   methods: {
     userHandle(){
       if(this.isLogin){
+        // this.$confirm('退出登录？', '提示', {
+        //   confirmButtonText: '确定',
+        //   cancelButtonText: '取消'
+        // }).then(()=>{
+        //   localStorage.removeItem('token')
+        //   this.$store.commit('logoutHandle')
+        // })
         this.$router.push({name: 'user'})
       }else{
         this.showLogin = true

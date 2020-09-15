@@ -8,7 +8,28 @@
           <router-link :to="{name: 'publish', params: {state}}">编辑</router-link>
         </div>
       </div>
-      <VueShowdown :markdown="state.content" class="markdown"/>
+      <VueShowdown ref="showdown" :markdown="state.content" class="markdown"/>
+    </div>
+    <comment :class="showComment?'showComment':''" @cancelComment="switchComment" :article="{id:state.id,title:state.title,type:state.type}"></comment>
+    <div class="commentList">
+      <div class="title">
+        <p>留言区</p>
+      </div>
+      <div v-if="showCommentList">
+        <ul>
+          <li v-for="(item,index) in state.comments" :key="index">
+            <div class="name">网友说：</div>
+            <div class="content">{{item.content}}</div>
+          </li>
+        </ul>
+      </div>
+      <div v-else class="noComments">
+        <p>暂无留言</p>
+      </div>
+    </div>
+    <div class="tool">
+      <button>点赞</button>
+      <button @click="switchComment">留言</button>
     </div>
     <comment :class="showComment?'showComment':''" @cancelComment="switchComment" :article="{id:state.id,title:state.title,type:state.type}"></comment>
     <div class="commentList">

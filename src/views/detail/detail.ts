@@ -4,6 +4,7 @@ import VueShowdown from 'vue-showdown'
 import axios from 'axios'
 import Config from '@/utils/config'
 import comment from '@/components/comment/comment.vue'
+import {throttle} from '@/utils/debounce&throttle'
 
 Vue.use(VueShowdown, {
   flavor: 'vanilla',
@@ -16,7 +17,7 @@ Vue.use(VueShowdown, {
   }
 })
 export default class Detail extends Vue {
-content = ""
+n = 0
 state = {
   id: -1,
   title: '',
@@ -36,6 +37,14 @@ mounted() {
  this.initData()
 }
 
+updated() {
+  this.$nextTick(()=>{
+    const markdown = document.querySelector('.markdown')
+    const imgList = markdown?.querySelectorAll('img')
+    window.onscroll = throttle(()=>{this.setLazyload(imgList)}, 100)
+  })
+}
+
 get isLogin(){
   return this.$store.state.isLogin
 }
@@ -51,7 +60,22 @@ initData(){
       this.showCommentList = false
       this.state.comments = []
     }
+    this.state.content = this.state.content.replace(/src/g, 'src="https://api.doglefts.cn/loading.gif" data-src')
   })
+}
+
+setLazyload(list: any): any{
+  const screenHeight = document.documentElement.clientHeight
+  const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+  for(let i=this.n;i<list.length;i++){
+    // console.log(list[i].offsetTop)
+    if(list[i].offsetTop < screenHeight + scrollTop){
+      if(list[i].src==='https://api.doglefts.cn/loading.gif'){
+        list[i].src = list[i].getAttribute('data-src')
+      }
+      this.n += 1
+    }
+  }
 }
 
 switchComment(){

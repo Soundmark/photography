@@ -8,8 +8,7 @@
   height: 100vh;
   display: none;
   min-width: 1350px;
-  min-height: 750px;
-  position: relative;
+   position: relative;
   background-color: #545252;
   box-shadow: inset 0 0 110px 25px white;
 }
