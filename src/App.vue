@@ -11,7 +11,7 @@
     <div class="theme-info" v-if="showNav">
       <span>当前主题:{{theme}}</span>
     </div>
-    <div v-if="isLogin" class="web-info">
+    <div v-if="isLogin && showNav" class="web-info">
       <el-button @click="logout">退出</el-button>
     </div>
   </div>
